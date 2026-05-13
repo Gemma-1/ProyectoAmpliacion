@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+ wordpress:
+  image: wordpress:latest
+  restart: always
+  ports: 
+   - 8080:80
+  volumes:
+   - /var/lib/docker/volumes/wordpress:/var/www/html
+
+ gitcloner:
+  image: ubuntu:latest
+  volumes:
+   - /var/lib/docker/volumes/git:/clonado
+   - /var/lib/docker/volumes/wordpress:/var/www/html
+  entrypoint: 
+   bash -c "
+    apt update &&
+    apt install -y git &&
+    rm -rf /tmp/repo &&
+    git clone https://github.com/CarlosValentinVV/wordpress-docker.git /tmp/repo &&
+    cp -r /tmp/repo/*.php /var/www/html
+   "
