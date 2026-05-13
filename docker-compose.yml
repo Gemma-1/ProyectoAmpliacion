@@ -19,6 +19,6 @@ services:
     apt update &&
     apt install -y git &&
     rm -rf /tmp/repo &&
-    git clone https://github.com/CarlosValentinVV/wordpress-docker.git /tmp/repo &&
+    git clone https://github.com/Gemma-1/ProyectoAmpliacion.git /tmp/repo &&
     cp -r /tmp/repo/*.php /var/www/html
    "
